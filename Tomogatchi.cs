@@ -5,7 +5,7 @@ public class Tomogatchi
 {
     private int Hunger;
     private int Boredom;
-    private List<string> Words;
+    private List<string> Words = [];
     private bool IsAlive;
     public string Name;
 
@@ -29,8 +29,8 @@ public class Tomogatchi
 
     public void Teach(string Word)
     {
+        Console.WriteLine($"{Name} lärde sig {Word}");
         Words.Add(Word);
-        Console.WriteLine($"{Word}");
         ReduceBordedom();
     }
 
@@ -40,22 +40,36 @@ public class Tomogatchi
         Hunger++;
         Boredom++;
 
-          if (Hunger > 10 || Boredom > 10)
-            {
-                IsAlive = false;
-                
-            }
+         
         
     }
 
     public void PrintStats()
     {
-        Console.WriteLine($" {Name} är såhär uttråkad: {Boredom}, såhär hungrig: {Hunger} och den {IsAlive}");
+        Console.WriteLine($" {Name} är såhär uttråkad: {Boredom}, såhär hungrig: {Hunger} och den kan {Words.Count} ord");
     }
 
     public void GetAlive()
     {
-       
+        if (IsAlive == true)
+        {
+            Console.WriteLine("Den lever yippie");
+
+        }
+        
+         if (Hunger > 10 || Boredom > 10)
+        {
+            IsAlive = false;
+
+        }
+        
+
+ if (IsAlive == false)
+        {
+            Console.WriteLine("Den död bre");
+
+        }
+
     }
 
     private void ReduceBordedom()
